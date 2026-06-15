@@ -3,545 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Basiil | Premium Pure Vegetarian Dining</title>
-    <!-- FontAwesome for Premium Icons -->
+    <title>The Basiil - Premium Cloud Kitchen</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts for Modern Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <style>
-        /* --- GLOBAL DESIGN SYSTEM --- */
         :root {
-            --bg-dark: #0f141c;
-            --surface-card: #161f2c;
-            --surface-accent: #1e293b;
-            --primary-color: #2d6a4f;
-            --primary-light: #52b788;
-            --accent-color: #ffb703;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --transition: all 0.3s ease;
+            --bg-color: #0b0c10;
+            --surface-color: #1f2833;
+            --surface-accent: #2c3540;
+            --accent-color: #4ade80; /* Vibrant Neon Green */
+            --support-blue: #3b82f6;
+            --danger-red: #ef4444;
+            --text-primary: #ffffff;
+            --text-muted: #c5a059;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+            font-family: var(--font-main);
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            padding-bottom: 80px; /* Space for sticky cart on mobile */
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            padding-bottom: 120px; /* Space for sticky cart */
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* --- HERO BANNER --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.95)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80') center/cover;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* --- NAVIGATION BAR --- */
-        header {
-            background-color: rgba(22, 31, 44, 0.95);
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+
+        /* --- CATEGORY CHIPS --- */
+        .category-container {
             position: sticky;
             top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(11, 12, 16, 0.9);
             backdrop-filter: blur(10px);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--text-main);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--primary-light);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-light);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 1.4rem;
-        }
-
-        /* --- HERO LANDING SECTION --- */
-        .hero {
-            position: relative;
-            padding: 120px 0 80px 0;
-            background: linear-gradient(180deg, rgba(15,20,28,0.7) 0%, rgba(15,20,28,1) 100%), 
-                        url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 32px auto;
-        }
-
-        .cta-buttons {
+            padding: 15px 0;
             display: flex;
             justify-content: center;
+            gap: 10px;
+            z-index: 900;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .category-chip {
+            background: var(--surface-color);
+            color: #aaa;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-chip.active {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+        }
+
+        /* --- MENU GRID & CARDS --- */
+        .menu-grid {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 16px;
         }
 
-        .btn {
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--primary-light);
-            color: var(--primary-light);
-        }
-
-        /* --- PREMIUM LONG ABOUT SECTION --- */
-        .about {
-            padding: 80px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .badge {
-            background: rgba(82, 183, 136, 0.1);
-            color: var(--primary-light);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .about-text h3 {
-            margin: 25px 0 10px 0;
-            font-size: 1.2rem;
-            color: var(--text-main);
-        }
-
-        .about-text ul {
-            list-style: none;
-            margin: 20px 0;
-            padding-left: 10px;
-        }
-
-        .about-text ul li {
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .about-text ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary-light);
-            font-weight: bold;
-        }
-
-        .about-text ul li strong {
-            color: var(--text-main);
-        }
-
-        .about-text blockquote {
-            border-left: 3px solid var(--primary-color);
-            padding: 12px 20px;
-            margin: 25px 0;
-            font-style: italic;
-            color: #e0e0e0;
-            font-size: 1rem;
-            background: rgba(45, 106, 79, 0.08);
-            border-radius: 0 8px 8px 0;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .feature {
-            background: var(--surface-card);
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            border-left: 3px solid var(--primary-light);
-            color: var(--text-muted);
-        }
-
-        .feature i {
-            color: var(--primary-light);
-            margin-right: 8px;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .image-stack {
-            position: relative;
-            width: 100%;
-        }
-
-        .main-img {
-            width: 100%;
-            height: 480px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .experience-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background-color: var(--primary-color);
-            border: 2px solid var(--accent-color);
-            padding: 16px 24px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-
-        .experience-badge .number {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .experience-badge .text {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* --- FOOD MENU SECTION --- */
-        .menu-section {
-            padding: 80px 0;
-            background-color: rgba(22, 31, 44, 0.5);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.4rem;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .menu-filters {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background-color: var(--surface-card);
-            color: var(--text-muted);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 10px 24px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+        @media(min-width: 600px) {
+            .menu-grid { grid-template-columns: 1fr 1fr; }
         }
 
         .menu-item {
-            background-color: var(--surface-card);
+            background: var(--surface-color);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.02);
-            transition: var(--transition);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(82, 183, 136, 0.2);
+            display: flex;
+            border: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .menu-item img {
-            width: 100%;
-            height: 220px;
+            width: 110px;
+            height: 110px;
             object-fit: cover;
         }
 
         .menu-info {
-            padding: 24px;
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .menu-info h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        /* Pure CSS Authentic Green Veg Icon */
-        .veg-icon {
-            width: 16px;
-            height: 16px;
-            border: 2px solid #38b000;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-            padding: 2px;
-        }
-
-        .veg-icon::after {
-            content: "";
-            width: 6px;
-            height: 6px;
-            background-color: #38b000;
-            border-radius: 50%;
-            display: block;
+        .veg-icon::before {
+            content: "🟢";
+            font-size: 0.75rem;
         }
 
         .menu-info p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            height: 40px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-size: 0.8rem;
+            color: #aaa;
+            margin: 4px 0 8px 0;
+            line-height: 1.3;
         }
 
         .menu-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 16px;
         }
 
         .price {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 800;
             color: var(--accent-color);
         }
 
+        /* --- QUANTITY ENGINE CONTROLS --- */
         .quantity-controls {
             display: flex;
             align-items: center;
-            background-color: var(--surface-accent);
-            border-radius: 30px;
-            padding: 4px;
-            border: 1px solid rgba(255,255,255,0.05);
+            background: var(--surface-accent);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .quantity-controls button {
+            background: transparent;
+            border: none;
+            color: white;
             width: 32px;
             height: 32px;
-            border-radius: 50%;
-            border: none;
-            background-color: var(--surface-card);
-            color: var(--text-main);
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: background 0.2s;
         }
 
         .quantity-controls button:hover {
-            background-color: var(--primary-color);
+            background: rgba(255,255,255,0.05);
         }
 
-        .qty {
-            min-width: 30px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* --- FOOTER / LOCATION SECTION --- */
-        footer {
-            background-color: #0b0f15;
-            padding: 60px 0 30px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
-
-        .footer-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-
-        .footer-content p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
-        }
-
-        .footer-details {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .detail-box i {
-            color: var(--primary-light);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .detail-box span {
+        .quantity-controls .qty {
+            padding: 0 10px;
             font-size: 0.9rem;
-            color: var(--text-muted);
+            font-weight: 700;
+            min-width: 20px;
+            text-align: center;
         }
 
-        .copyright {
-            font-size: 0.8rem;
-            color: #4b5563;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 24px;
-        }
-
-        /* --- STICKY SMART CART DRAWER --- */
+        /* --- SMART TWO-STAGE CHECKOUT BAR --- */
         .cart-sticky-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: var(--surface-card);
-            border-top: 2px solid var(--primary-color);
+            background: #11141a;
+            border-top: 2px solid rgba(255,255,255,0.05);
+            padding: 16px;
             box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-            z-index: 2000;
-            padding: 16px 24px;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .cart-sticky-bar.visible {
-            transform: translateY(0);
+            z-index: 950;
+            display: none; /* Injected dynamically by logic */
         }
 
         .cart-bar-container {
-            max-width: 1200px;
+            max-width: 760px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .cart-info-summary {
@@ -550,457 +225,286 @@
         }
 
         .cart-count-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888;
+            letter-spacing: 1px;
         }
 
         .cart-total-text {
             font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent-color);
+            font-weight: 800;
+            color: white;
         }
 
         .whatsapp-checkout-btn {
-            background-color: #25d366;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            background: var(--accent-color);
+            color: #000;
             border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
         }
 
-        .whatsapp-checkout-btn:hover {
-            background-color: #20ba59;
-            transform: translateY(-2px);
+        .whatsapp-checkout-btn:active {
+            transform: scale(0.98);
         }
 
-        /* --- RESPONSIVE DESIGN MEDIA QUERIES --- */
-        @media (max-width: 992px) {
-            .about {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .about-image {
-                order: -1;
-                max-width: 600px;
-                margin: 0 auto;
-                width: 100%;
-            }
-            .main-img {
-                height: 360px;
-            }
+        /* --- FLOATING HELP DESK & SYSTEM MODALS --- */
+        .support-fab {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--support-blue);
+            color: white;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            transition: transform 0.2s;
         }
 
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
-            
-            .hamburger { display: block; }
-            
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: var(--surface-card);
-                flex-direction: column;
-                align-items: center;
-                padding-top: 50px;
-                gap: 40px;
-                transition: var(--transition);
-                z-index: 999;
-            }
+        .support-fab:hover { transform: scale(1.05); }
 
-            .nav-menu.active {
-                left: 0;
-            }
+        .system-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
 
-            .experience-badge {
-                bottom: 15px;
-                right: 15px;
-                padding: 10px 16px;
-            }
-            .experience-badge .number { font-size: 1.4rem; }
+        .modal-card {
+            background: #161920;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 24px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 365px;
+            text-align: center;
+            position: relative;
+        }
 
-            .cart-bar-container {
-                flex-direction: row;
-                gap: 10px;
-            }
-            .whatsapp-checkout-btn {
-                padding: 12px 20px;
-                font-size: 0.88rem;
-            }
+        .close-modal-btn {
+            position: absolute;
+            top: 14px; right: 18px;
+            color: #777;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .support-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- --- NAVIGATION BAR --- -->
-    <header>
-        <div class="container navbar">
-            <a href="#" class="logo">The <span>Basiil</span></a>
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">Our Story</a></li>
-                <li><a href="#menu" class="nav-link">Menu</a></li>
-                <li><a href="#contact" class="nav-link">Find Us</a></li>
-            </ul>
-        </div>
-    </header>
+    <div class="hero">
+        <h1>THE <span>BASIIL</span></h1>
+        <p>Gourmet Cloud Kitchen • Freshly Prepared & Delivered Fast</p>
+    </div>
 
-    <!-- --- HERO LANDING SECTION --- -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>100% Pure Vegetarian Culinary Excellence</h1>
-            <p>Experience gourmet multi-cuisine wonders in the heart of Siliguri. Fresh ingredients, exquisite flavors, and perfect family dining.</p>
-            <div class="cta-buttons">
-                <a href="#menu" class="btn btn-primary"><i class="fas fa-utensils"></i> View Menu</a>
-                <a href="#about" class="btn btn-secondary">Learn More</a>
-            </div>
-        </div>
-    </section>
+    <div class="category-container">
+        <div class="category-chip active" data-target="all">All Items</div>
+        <div class="category-chip" data-target="north-indian">North Indian</div>
+        <div class="category-chip" data-target="chinese">Chinese</div>
+        <div class="category-chip" data-target="fast-food">Fast Food</div>
+    </div>
 
-    <!-- --- PREMIUM LONG-FORM ABOUT SECTION --- -->
-    <section id="about" class="about container">
-        <div class="about-text">
-            <span class="badge"><i class="fas fa-heart"></i> Our Story</span>
-            <h2>Crafting Extraordinary Vegetarian Memories in Siliguri</h2>
-            
-            <p>Welcome to <strong>The Basiil</strong>, where culinary passion meets the pristine standards of 100% pure vegetarian dining. Nestled elegantly on the <strong>1st Floor of City Centre Mall (E Block, right above Domino's)</strong>, we have established ourselves as a premier sanctuary for food connoisseurs, families, and shoppers looking for an unparalleled gastronomic experience in Siliguri.</p>
-            
-            <p>Our philosophy is simple: vegetarian food should never be a compromise. It should be a celebration of rich textures, vibrant colors, and deep, authentic flavors. Every single dish that leaves our state-of-the-art, strictly vegetarian kitchen is crafted from scratch using handpicked, locally sourced vegetables, premium dairy, and an exquisite blend of traditional and contemporary spices.</p>
-            
-            <h3>A Symphony of Three Cuisines</h3>
-            <p>At The Basiil, we understand that a great dining experience requires variety. That is why we have carefully curated a multi-cuisine menu handled by specialized chefs:</p>
-            <ul>
-                <li><strong>The North Indian Heritage:</strong> From the slow-cooked, buttery richness of our Dal Makhani to the velvety, aromatic bliss of Paneer Butter Masala, we bring the true soul of Punjab and Old Delhi to your plate.</li>
-                <li><strong>The Pan-Asian Wok Magic:</strong> Sizzling high-flame creations, crisp colorful vegetables, and perfectly balanced sauces define our Indo-Chinese menu, featuring crowd favorites like Veg Hakka Noodles and Chilli Paneer.</li>
-                <li><strong>Modern Fast Food Comforts:</strong> Perfect for a quick hangout or a mall break, our crispy burgers, artisanal sandwiches, and perfectly seasoned chatkara fries offer premium comfort food at its finest.</li>
-            </ul>
-
-            <blockquote>
-                "We don't just serve meals; we curate dining experiences that bring families together and turn first-time visitors into lifelong patrons."
-            </blockquote>
-            
-            <div class="features">
-                <div class="feature"><i class="fas fa-leaf"></i> <strong>100% Pure Veg Sanctuary:</strong> Complete separation of utensils and ingredients for absolute peace of mind.</div>
-                <div class="feature"><i class="fas fa-medal"></i> <strong>Gourmet Quality Standards:</strong> We use only premium-grade cottage cheese, select oils, and fresh produce.</div>
-                <div class="feature"><i class="fas fa-glass-cheers"></i> <strong>Premium Mall Ambience:</strong> Fully air-conditioned, elegant seating arrangement perfect for family gatherings.</div>
-                <div class="feature"><i class="fas fa-hands-wash"></i> <strong>Strict Hygiene Protocols:</strong> Zero-compromise cleanliness from food preparation to contactless presentation.</div>
-            </div>
-        </div>
+    <div class="menu-grid">
         
-        <div class="about-image">
-            <div class="image-stack">
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="The Basiil Premium Fine Dining Ambience" class="main-img">
-                <div class="experience-badge">
-                    <span class="number">4.8</span>
-                    <span class="text">Google Rated Hub</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- --- EXPANDED MENU SECTION --- -->
-    <section id="menu" class="menu-section">
-        <div class="container">
-            <h2 class="section-title">Explore Our Menu</h2>
-            
-            <div class="menu-filters">
-                <button class="filter-btn active" data-filter="all">All Dishes</button>
-                <button class="filter-btn" data-filter="chinese">Chinese</button>
-                <button class="filter-btn" data-filter="north-indian">North Indian</button>
-                <button class="filter-btn" data-filter="fast-food">Fast Food</button>
-            </div>
-
-            <div class="menu-grid">
-                <!-- --- CHINESE CATEGORY --- -->
-                <div class="menu-item" data-category="chinese">
-                    <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80" alt="Veg Noodles">
-                    <div class="menu-info">
-                        <h3>Veg Hakka Noodles <span class="veg-icon"></span></h3>
-                        <p>Classic wok-tossed noodles with crunchy colorful veggies.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹180</span>
-                            <div class="quantity-controls" data-name="Veg Hakka Noodles" data-price="180">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-category="chinese">
-                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80" alt="Chilli Paneer">
-                    <div class="menu-info">
-                        <h3>Chilli Paneer Dry <span class="veg-icon"></span></h3>
-                        <p>Battered paneer cubes tossed with bell peppers and spicy chili sauce.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹240</span>
-                            <div class="quantity-controls" data-name="Chilli Paneer Dry" data-price="240">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-category="chinese">
-                    <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=400&q=80" alt="Manchow Soup">
-                    <div class="menu-info">
-                        <h3>Veg Manchow Soup <span class="veg-icon"></span></h3>
-                        <p>Spicy and tangy Indo-Chinese soup served with crispy fried noodles.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹140</span>
-                            <div class="quantity-controls" data-name="Veg Manchow Soup" data-price="140">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- --- NORTH INDIAN CATEGORY --- -->
-                <div class="menu-item" data-category="north-indian">
-                    <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=400&q=80" alt="Paneer Butter Masala">
-                    <div class="menu-info">
-                        <h3>Paneer Butter Masala <span class="veg-icon"></span></h3>
-                        <p>Rich and creamy tomato-based gravy filled with cottage cheese cubes.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹280</span>
-                            <div class="quantity-controls" data-name="Paneer Butter Masala" data-price="280">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-category="north-indian">
-                    <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=400&q=80" alt="Dal Makhani">
-                    <div class="menu-info">
-                        <h3>Dal Makhani <span class="veg-icon"></span></h3>
-                        <p>Slow-cooked black lentils enriched with butter and fresh cream.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹220</span>
-                            <div class="quantity-controls" data-name="Dal Makhani" data-price="220">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-category="north-indian">
-                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80" alt="Kadhai Paneer">
-                    <div class="menu-info">
-                        <h3>Kadhai Paneer <span class="veg-icon"></span></h3>
-                        <p>Paneer cooked with freshly ground spices and distinct flavor of capsicum.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹290</span>
-                            <div class="quantity-controls" data-name="Kadhai Paneer" data-price="290">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- --- FAST FOOD CATEGORY --- -->
-                <div class="menu-item" data-category="fast-food">
-                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Veg Burger">
-                    <div class="menu-info">
-                        <h3>Cheese Crunch Burger <span class="veg-icon"></span></h3>
-                        <p>Crispy veg patty loaded with melting cheese and premium dressing.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹120</span>
-                            <div class="quantity-controls" data-name="Cheese Crunch Burger" data-price="120">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-category="fast-food">
-                    <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80" alt="Peri Peri Fries">
-                    <div class="menu-info">
-                        <h3>Chatkara Peri Peri Fries <span class="veg-icon"></span></h3>
-                        <p>Golden crispy French fries tossed in spicy spice mix.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹110</span>
-                            <div class="quantity-controls" data-name="Chatkara Peri Peri Fries" data-price="110">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-category="fast-food">
-                    <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80" alt="Club Sandwich">
-                    <div class="menu-info">
-                        <h3>Veg Club Grilled Sandwich <span class="veg-icon"></span></h3>
-                        <p>Triple-layered grilled sandwich loaded with fresh veggies and green chutney.</p>
-                        <div class="menu-footer">
-                            <span class="price">₹150</span>
-                            <div class="quantity-controls" data-name="Veg Club Grilled Sandwich" data-price="150">
-                                <button class="minus-btn">-</button>
-                                <span class="qty">0</span>
-                                <button class="plus-btn">+</button>
-                            </div>
-                        </div>
+        <div class="menu-item" data-category="north-indian">
+            <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=200&q=80" alt="Kadhai Paneer">
+            <div class="menu-info">
+                <h3>Kadhai Paneer <span class="veg-icon"></span></h3>
+                <p>Fresh cottage cheese tossed with bell peppers and aromatic freshly grounded spices.</p>
+                <div class="menu-footer">
+                    <span class="price">₹280</span>
+                    <div class="quantity-controls" data-name="Kadhai Paneer" data-price="280">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- --- FOOTER / LOCATION SECTION --- -->
-    <footer id="contact">
-        <div class="container footer-content">
-            <h3>The Basiil</h3>
-            <p>Siliguri's Premier Pure Vegetarian Fine Dining Destination</p>
-            
-            <div class="footer-details">
-                <div class="detail-box">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>1st Floor, City Centre Mall, E Block (Above Domino's), Siliguri</span>
+        <div class="menu-item" data-category="chinese">
+            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=200&q=80" alt="Chilli Garlic Noodles">
+            <div class="menu-info">
+                <h3>Chilli Garlic Noodles <span class="veg-icon"></span></h3>
+                <p>Spicy stir-fried noodles loaded with burnt garlic, peppers, and authentic sauces.</p>
+                <div class="menu-footer">
+                    <span class="price">₹190</span>
+                    <div class="quantity-controls" data-name="Chilli Garlic Noodles" data-price="190">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
                 </div>
-                <div class="detail-box">
-                    <i class="fas fa-clock"></i>
-                    <span>Open Daily: 11:00 AM - 10:30 PM</span>
-                </div>
-            </div>
-
-            <div class="copyright">
-                &copy; 2026 The Basiil Restaurant. Built with ❤️ for Mobile Food Ordering.
             </div>
         </div>
-    </footer>
 
-    <!-- --- STICKY SMART CART BAR --- -->
+        <div class="menu-item" data-category="fast-food">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=80" alt="Crispy Veg Burger">
+            <div class="menu-info">
+                <h3>Crispy Veg Burger <span class="veg-icon"></span></h3>
+                <p>Toasted buns sandwiching a crispy golden vegetable patty, lettuce, and secret creamy mayo.</p>
+                <div class="menu-footer">
+                    <span class="price">₹120</span>
+                    <div class="quantity-controls" data-name="Crispy Veg Burger" data-price="120">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
     <div class="cart-sticky-bar" id="cart-sticky-bar">
-        <div class="cart-bar-container">
-            <div class="cart-info-summary">
-                <span class="cart-count-text" id="cart-count">0 ITEMS ADDED</span>
-                <span class="cart-total-text" id="cart-total">₹0</span>
+        <div class="cart-bar-container" style="flex-direction: column; gap: 14px;">
+            
+            <div id="checkout-form" style="display: none; width: 100%;">
+                <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">DELIVERY & SECURE PAYMENT DETAILS:</p>
+                <input type="text" id="cust-name" placeholder="Enter Your Full Name" style="width: 100%; padding: 11px; margin-bottom: 8px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem;">
+                <textarea id="cust-address" placeholder="Full Delivery Address (Flat/House No, Landmark, Street)" style="width: 100%; padding: 11px; margin-bottom: 10px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; height: 60px; resize: none;"></textarea>
+                
+                <select id="payment-method" style="width: 100%; padding: 11px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer;">
+                    <option value="COD">💵 Cash on Delivery (COD)</option>
+                    <option value="UPI_DEEP">📱 Pay via UPI App Instantly (GPay/PhonePe/Paytm)</option>
+                    <option value="RAZORPAY">💳 Pay via Card / NetBanking / Wallets</option>
+                </select>
             </div>
-            <button class="whatsapp-checkout-btn" id="whatsapp-checkout">
-                <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="cart-info-summary">
+                    <span class="cart-count-text" id="cart-count">0 ITEMS ADDED</span>
+                    <span class="cart-total-text" id="cart-total">₹0</span>
+                </div>
+                <button class="whatsapp-checkout-btn" id="whatsapp-checkout">
+                    Next: Add Details <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="support-fab" id="open-support-btn">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <div class="system-modal" id="support-modal">
+        <div class="modal-card">
+            <span class="close-modal-btn" id="close-support-btn">&times;</span>
+            <h3 style="color: white; margin-bottom: 6px;">Customer Support</h3>
+            <p style="color: #aaa; font-size: 0.85rem; margin-bottom: 18px;">Need to cancel, track, or modify your current meal dispatch? Tap an option below:</p>
+            
+            <a href="tel:+919876543210" class="support-action-btn" style="background: var(--danger-red); color: white;">
+                <i class="fas fa-phone-alt"></i> Urgent: Call Kitchen to Cancel
+            </a>
+            
+            <button id="track-order-btn" class="support-action-btn" style="background: var(--accent-color); color: #000;">
+                <i class="fas fa-truck"></i> Track Delivery Status
+            </button>
+            
+            <button id="chat-support-btn" class="support-action-btn" style="background: #25d366; color: white;">
+                <i class="fab fa-whatsapp"></i> Chat General Assistance
             </button>
         </div>
     </div>
 
-    <!-- --- PROGRAM FUNCTIONALITY (JAVASCRIPT) --- -->
+
     <script>
-        // --- 1. CONFIGURATION ---
-        const WHATSAPP_NUMBER = "919876543210"; // CHANGE THIS to the actual restaurant phone number (with country code, no symbols)
+        // =========================================================
+        // --- ⚙️ CONFIGURATION ZONE (EDIT THESE STATEMENTS) ---
+        // =========================================================
+        const WHATSAPP_NUMBER = "919876543210";       // Restaurant WhatsApp number with Country Code (no '+' sign)
+        const RESTAURANT_UPI_ID = "basiil@okaxis";     // Your active merchant bank UPI handler
+        const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY";  // Put your public Razorpay Key ID here from dashboard
+        // =========================================================
 
-        // --- 2. MOBILE HAMBURGER MENU ---
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
+        // Application Global UI States
+        let cart = {};
+        let checkoutStage = "cart"; 
 
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = hamburger.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+        const cartBar = document.getElementById('cart-sticky-bar');
+        const cartCountText = document.getElementById('cart-count');
+        const cartTotalText = document.getElementById('cart-total');
+        const checkoutButton = document.getElementById('whatsapp-checkout');
+        const checkoutForm = document.getElementById('checkout-form');
+        const paymentSelector = document.getElementById('payment-method');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = hamburger.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
+        // --- 1. FILTER CONTROLLER ENGINE ---
+        const chips = document.querySelectorAll('.category-chip');
+        const dishes = document.querySelectorAll('.menu-item');
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
                 
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            });
-        });
-
-        // --- 3. MENU LIVE FILTERING ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const filterValue = button.getAttribute('data-filter');
-
-                menuItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
+                const target = chip.getAttribute('data-target');
+                dishes.forEach(dish => {
+                    if (target === 'all' || dish.getAttribute('data-category') === target) {
+                        dish.style.display = 'flex';
                     } else {
-                        item.style.display = 'none';
+                        dish.style.display = 'none';
                     }
                 });
             });
         });
 
-        // --- 4. SMART SHOPPING CART & WHATSAPP ENGINE ---
-        let cart = {};
+        // --- 2. MULTI-INCREMENT QUANTITY MANAGEMENT ---
+        document.querySelectorAll('.quantity-controls').forEach(control => {
+            const plusBtn = control.querySelector('.plus-btn');
+            const minusBtn = control.querySelector('.minus-btn');
+            const qtyDisplay = control.querySelector('.qty');
+            const itemName = control.getAttribute('data-name');
+            const itemPrice = parseInt(control.getAttribute('data-price'));
 
-        const plusButtons = document.querySelectorAll('.plus-btn');
-        const minusButtons = document.querySelectorAll('.minus-btn');
-        const cartBar = document.getElementById('cart-sticky-bar');
-        const cartCountDisplay = document.getElementById('cart-count');
-        const cartTotalDisplay = document.getElementById('cart-total');
-        const whatsappButton = document.getElementById('whatsapp-checkout');
-
-        plusButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const controls = e.target.parentElement;
-                const itemName = controls.getAttribute('data-name');
-                const itemPrice = parseInt(controls.getAttribute('data-price'));
-                const qtyDisplay = controls.querySelector('.qty');
-
+            plusBtn.addEventListener('click', () => {
                 if (!cart[itemName]) {
                     cart[itemName] = { price: itemPrice, qty: 0 };
                 }
-
-                cart[itemName].qty += 1;
-                qtyDisplay.textContent = cart[itemName].qty;
+                cart[itemName].qty++;
+                qtyDisplay.innerText = cart[itemName].qty;
                 updateCartState();
             });
-        });
 
-        minusButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const controls = e.target.parentElement;
-                const itemName = controls.getAttribute('data-name');
-                const qtyDisplay = controls.querySelector('.qty');
-
-                if (cart[itemName] && cart[itemName].qty > 0) {
-                    cart[itemName].qty -= 1;
-                    qtyDisplay.textContent = cart[itemName].qty;
-
+            minusBtn.addEventListener('click', () => {
+                if (cart[itemName]) {
+                    cart[itemName].qty--;
+                    qtyDisplay.innerText = cart[itemName].qty;
                     if (cart[itemName].qty === 0) {
                         delete cart[itemName];
                     }
@@ -1009,49 +513,169 @@
             });
         });
 
+        // --- 3. CORE UI SYNC MATRIX ---
         function updateCartState() {
             let totalItems = 0;
-            let totalPrice = 0;
-
-            for (const item in cart) {
-                totalItems += cart[item].qty;
-                totalPrice += (cart[item].price * cart[item].qty);
-            }
-
-            if (totalItems > 0) {
-                cartBar.classList.add('visible');
-                cartCountDisplay.textContent = `${totalItems} ${totalItems === 1 ? 'ITEM' : 'ITEMS'} ADDED`;
-                cartTotalDisplay.textContent = `₹${totalPrice}`;
-            } else {
-                cartBar.classList.remove('visible');
-            }
-        }
-
-        // --- 5. AUTOMATIC WHATSAPP TEXT GENERATION ---
-        whatsappButton.addEventListener('click', () => {
-            if (Object.keys(cart).length === 0) return;
-
-            let message = "🟢 *NEW ORDER FROM THE BASIIL WEBSITE*\n";
-            message += "--------------------------------------\n\n";
-            
             let grandTotal = 0;
 
             for (const item in cart) {
-                const itemTotal = cart[item].price * cart[item].qty;
-                grandTotal += itemTotal;
-                message += `• *${item}*\n  ${cart[item].qty} x ₹${cart[item].price} = ₹${itemTotal}\n\n`;
+                totalItems += cart[item].qty;
+                grandTotal += (cart[item].price * cart[item].qty);
             }
 
-            message += "--------------------------------------\n";
-            message += `*Grand Total: ₹${grandTotal}*\n\n`;
-            message += "Please confirm availability and sharing prep time. Thank you!";
+            if (totalItems > 0) {
+                cartBar.style.display = 'block';
+                cartCountText.innerText = `${totalItems} ITEM${totalItems > 1 ? 'S' : ''} ADDED`;
+                cartTotalText.innerText = `₹${grandTotal}`;
+            } else {
+                cartBar.style.display = 'none';
+                resetCheckoutStage();
+            }
+        }
 
-            // Encode text strings safely for URL transit
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        // --- 4. TWO-STAGE REACTION TERMINALS ---
+        paymentSelector.addEventListener('change', () => {
+            if (checkoutStage === "address") updateButtonContext();
+        });
 
-            // Trigger secure relocation to WhatsApp interface
-            window.open(whatsappUrl, '_blank');
+        function updateButtonContext() {
+            const method = paymentSelector.value;
+            if (method === "COD") {
+                checkoutButton.innerHTML = `<i class="fab fa-whatsapp"></i> Place COD Order`;
+            } else if (method === "UPI_DEEP") {
+                checkoutButton.innerHTML = `<i class="fas fa-mobile-alt"></i> Pay via UPI App`;
+            } else if (method === "RAZORPAY") {
+                checkoutButton.innerHTML = `<i class="fas fa-credit-card"></i> Pay via Cards/Banking`;
+            }
+        }
+
+        checkoutButton.addEventListener('click', () => {
+            if (Object.keys(cart).length === 0) return;
+
+            // STAGE 1: Reveal Address Panel Setup
+            if (checkoutStage === "cart") {
+                checkoutForm.style.display = "block";
+                checkoutStage = "address";
+                updateButtonContext();
+                return;
+            }
+
+            // STAGE 2: Run Client Authorization Gateways
+            if (checkoutStage === "address") {
+                const custName = document.getElementById('cust-name').value.trim();
+                const custAddress = document.getElementById('cust-address').value.trim();
+                const paymentMethod = paymentSelector.value;
+
+                if (!custName || !custAddress) {
+                    alert("Please type your Name and Delivery Address before advancing!");
+                    return;
+                }
+
+                // Compile Text Components
+                let grandTotal = 0;
+                let receiptBreakdown = "";
+                for (const item in cart) {
+                    const itemTotal = cart[item].price * cart[item].qty;
+                    grandTotal += itemTotal;
+                    receiptBreakdown += `• *${item}*\n  ${cart[item].qty} x ₹${cart[item].price} = ₹${itemTotal}\n\n`;
+                }
+
+                // FLOW A: CASH ON DELIVERY ROUTING
+                if (paymentMethod === "COD") {
+                    dispatchToWhatsApp(custName, custAddress, "💵 Cash on Delivery (COD)", "Pending Kitchen Callback", grandTotal, receiptBreakdown);
+                }
+
+                // FLOW B: NATIVE PHONE PEER-TO-PEER DEEP LINKING
+                else if (paymentMethod === "UPI_DEEP") {
+                    const intentUri = `upi://pay?pa=${RESTAURANT_UPI_ID}&pn=${encodeURIComponent("The Basiil")}&am=${grandTotal}&cu=INR&tn=${encodeURIComponent("Food - " + custName)}`;
+                    alert("Launching local smartphone payment system apps. Complete payment, then tap 'Confirm Order' back on this browser web tab!");
+                    window.location.href = intentUri;
+                    
+                    // Transformation step to enable final chat hand-off notification loop
+                    checkoutButton.innerHTML = `<i class="fab fa-whatsapp"></i> Confirm & Send Order`;
+                    paymentSelector.value = "COD"; 
+                }
+
+                // FLOW C: SECURE INTEGRATED RAZORPAY STANDARD POPUP OVERLAY
+                else if (paymentMethod === "RAZORPAY") {
+                    if(RAZORPAY_KEY_ID.includes("YOUR_KEY")) {
+                        alert("Config Error: Replace placeholder key string inside code with your real key!");
+                        return;
+                    }
+
+                    var checkoutOptions = {
+                        "key": RAZORPAY_KEY_ID,
+                        "amount": grandTotal * 100, // conversion logic to paises
+                        "currency": "INR",
+                        "name": "The Basiil",
+                        "description": "Secure Checkout Settlement",
+                        "theme": { "color": "#4ade80" },
+                        "prefill": { "name": custName },
+                        "handler": function (rzpResponse) {
+                            alert("Payment Captured Successfully!");
+                            dispatchToWhatsApp(custName, custAddress, "💳 Online Payment (Razorpay)", `✅ Token Verified: ${rzpResponse.razorpay_payment_id}`, grandTotal, receiptBreakdown);
+                        },
+                        "modal": {
+                            "ondismiss": function() { alert("Payment Interface Dismissed."); }
+                        }
+                    };
+                    var instance = new Razorpay(checkoutOptions);
+                    instance.open();
+                }
+            }
+        });
+
+        function dispatchToWhatsApp(name, address, method, transactionState, total, itemsFormatted) {
+            let message = "🟢 *NEW WEB ORDER DETECTED FROM THE BASIIL*\n";
+            message += "======================================\n";
+            message += `👤 *Customer:* ${name}\n`;
+            message += `🏠 *Address:* ${address}\n`;
+            message += `💳 *Payment Method:* ${method}\n`;
+            message += `📌 *Transaction status:* ${transactionState}\n`;
+            message += "======================================\n\n";
+            message += itemsFormatted;
+            message += "======================================\n";
+            message += `*Grand Total: ₹${total}*\n\n`;
+            message += "Please review this digital ticket and provide confirmation prep time. Thank you!";
+
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function resetCheckoutStage() {
+            checkoutForm.style.display = "none";
+            checkoutButton.innerHTML = `Next: Add Details <i class="fas fa-arrow-right"></i>`;
+            checkoutStage = "cart";
+            document.getElementById('cust-name').value = "";
+            document.getElementById('cust-address').value = "";
+            paymentSelector.value = "COD";
+        }
+
+        // --- 5. HELP DESK & LIVE DISPATCH TRACKER MODAL INTERFACES ---
+        const helpModal = document.getElementById('support-modal');
+        const openHelpBtn = document.getElementById('open-support-btn');
+        const closeHelpBtn = document.getElementById('close-support-btn');
+        const trackOrderBtn = document.getElementById('track-order-btn');
+        const chatSupportBtn = document.getElementById('chat-support-btn');
+
+        openHelpBtn.addEventListener('click', () => helpModal.style.display = 'flex');
+        closeHelpBtn.addEventListener('click', () => helpModal.style.display = 'none');
+        window.addEventListener('click', (e) => { if (e.target === helpModal) helpModal.style.display = 'none'; });
+
+        trackOrderBtn.addEventListener('click', () => {
+            const currentNameInput = document.getElementById('cust-name').value.trim();
+            let trackPayloadText = "";
+
+            if (currentNameInput) {
+                trackPayloadText = `👋 Hi Team! I just pushed a digital order profile under the name *${currentNameInput}*. Could you drop me the courier map status link or active delivery driver contact info?`;
+            } else {
+                trackPayloadText = "👋 Hi Team! I'm reaching out to request a real-time transit status update on my recent food dispatch request.";
+            }
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(trackPayloadText)}`, '_blank');
+        });
+
+        chatSupportBtn.addEventListener('click', () => {
+            const genericSupportMsg = "Hello! I am browsing your web menu platform and ran into a general question regarding kitchen operations.";
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(genericSupportMsg)}`, '_blank');
         });
     </script>
 </body>
