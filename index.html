@@ -34,23 +34,23 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            padding-bottom: 120px; /* Space for sticky cart */
+            padding-bottom: 140px; /* Enhanced space for multi-stage sticky cart */
         }
 
         /* --- HERO BANNER --- */
         .hero {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.95)), 
+            padding: 50px 20px;
+            background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.98)), 
                         url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80') center/cover;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             letter-spacing: -1px;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .hero h1 span {
@@ -58,53 +58,62 @@
         }
 
         .hero p {
-            color: #888;
-            font-size: 0.95rem;
+            color: #aaa;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         /* --- CATEGORY CHIPS --- */
         .category-container {
             position: sticky;
             top: 0;
-            background: rgba(11, 12, 16, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 16px 0;
             display: flex;
             justify-content: center;
             gap: 10px;
             z-index: 900;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .category-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar on mobile layout */
         }
 
         .category-chip {
             background: var(--surface-color);
             color: #aaa;
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+            display: inline-block;
         }
 
         .category-chip.active {
             background: var(--accent-color);
             color: #000;
             border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(74, 222, 128, 0.2);
         }
 
         /* --- MENU GRID & CARDS --- */
         .menu-grid {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 15px;
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 0 16px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 18px;
         }
 
-        @media(min-width: 600px) {
+        @media(min-width: 700px) {
             .menu-grid { grid-template-columns: 1fr 1fr; }
         }
 
@@ -114,17 +123,22 @@
             overflow: hidden;
             display: flex;
             border: 1px solid rgba(255,255,255,0.03);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: transform 0.2s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-2px);
         }
 
         .menu-item img {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
         }
 
         .menu-info {
-            padding: 12px;
+            padding: 14px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -132,11 +146,12 @@
         }
 
         .menu-info h3 {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            color: #fff;
         }
 
         .veg-icon::before {
@@ -146,9 +161,9 @@
 
         .menu-info p {
             font-size: 0.8rem;
-            color: #aaa;
-            margin: 4px 0 8px 0;
-            line-height: 1.3;
+            color: #b0b0b0;
+            margin: 4px 0 10px 0;
+            line-height: 1.4;
         }
 
         .menu-footer {
@@ -158,7 +173,7 @@
         }
 
         .price {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--accent-color);
         }
@@ -177,23 +192,23 @@
             background: transparent;
             border: none;
             color: white;
-            width: 32px;
-            height: 32px;
-            font-size: 1rem;
+            width: 34px;
+            height: 34px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.2s;
         }
 
         .quantity-controls button:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
         }
 
         .quantity-controls .qty {
-            padding: 0 10px;
-            font-size: 0.9rem;
+            padding: 0 8px;
+            font-size: 0.95rem;
             font-weight: 700;
-            min-width: 20px;
+            min-width: 24px;
             text-align: center;
         }
 
@@ -204,15 +219,15 @@
             left: 0;
             width: 100%;
             background: #11141a;
-            border-top: 2px solid rgba(255,255,255,0.05);
+            border-top: 2px solid rgba(255,255,255,0.08);
             padding: 16px;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 -10px 35px rgba(0,0,0,0.6);
             z-index: 950;
-            display: none; /* Injected dynamically by logic */
+            display: none; 
         }
 
         .cart-bar-container {
-            max-width: 760px;
+            max-width: 860px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -232,7 +247,7 @@
         }
 
         .cart-total-text {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: white;
         }
@@ -241,49 +256,49 @@
             background: var(--accent-color);
             color: #000;
             border: none;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 12px;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: transform 0.2s;
+            transition: transform 0.2s, background-color 0.2s;
         }
 
         .whatsapp-checkout-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         /* --- FLOATING HELP DESK & SYSTEM MODALS --- */
         .support-fab {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 24px;
+            left: 24px;
             background: var(--support-blue);
             color: white;
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.45);
             z-index: 1000;
             transition: transform 0.2s;
         }
 
-        .support-fab:hover { transform: scale(1.05); }
+        .support-fab:hover { transform: scale(1.08); }
 
         .system-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -291,22 +306,25 @@
 
         .modal-card {
             background: #161920;
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 26px;
             border-radius: 20px;
             width: 90%;
-            max-width: 365px;
+            max-width: 380px;
             text-align: center;
             position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .close-modal-btn {
             position: absolute;
             top: 14px; right: 18px;
-            color: #777;
-            font-size: 1.4rem;
+            color: #888;
+            font-size: 1.5rem;
             cursor: pointer;
+            transition: color 0.2s;
         }
+        .close-modal-btn:hover { color: #fff; }
 
         .support-action-btn {
             display: flex;
@@ -314,29 +332,31 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 12px;
-            margin-top: 12px;
+            padding: 14px;
+            margin-top: 14px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             text-decoration: none;
+            transition: opacity 0.2s;
         }
+        .support-action-btn:active { opacity: 0.9; }
     </style>
 </head>
 <body>
 
     <div class="hero">
         <h1>THE <span>BASIIL</span></h1>
-        <p>Gourmet Cloud Kitchen • Freshly Prepared & Delivered Fast</p>
+        <p>Gourmet Cloud Kitchen • Premium Ingredients, Prepared Fresh</p>
     </div>
 
     <div class="category-container">
-        <div class="category-chip active" data-target="all">All Items</div>
-        <div class="category-chip" data-target="north-indian">North Indian</div>
-        <div class="category-chip" data-target="chinese">Chinese</div>
-        <div class="category-chip" data-target="fast-food">Fast Food</div>
+        <div class="category-chip active" data-target="all">All Specialties</div>
+        <div class="category-chip" data-target="north-indian">North Indian Mainframe</div>
+        <div class="category-chip" data-target="chinese">Chinese Wok</div>
+        <div class="category-chip" data-target="fast-food">Street Side Fast Food</div>
     </div>
 
     <div class="menu-grid">
@@ -345,7 +365,7 @@
             <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=200&q=80" alt="Kadhai Paneer">
             <div class="menu-info">
                 <h3>Kadhai Paneer <span class="veg-icon"></span></h3>
-                <p>Fresh cottage cheese tossed with bell peppers and aromatic freshly grounded spices.</p>
+                <p>Fresh cottage cheese chunks tossed with colorful bell peppers and pounded whole spices.</p>
                 <div class="menu-footer">
                     <span class="price">₹280</span>
                     <div class="quantity-controls" data-name="Kadhai Paneer" data-price="280">
@@ -357,11 +377,76 @@
             </div>
         </div>
 
+        <div class="menu-item" data-category="north-indian">
+            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=200&q=80" alt="Paneer Butter Masala">
+            <div class="menu-info">
+                <h3>Paneer Butter Masala <span class="veg-icon"></span></h3>
+                <p>Rich, creamy, mildly sweet gravy featuring tender paneer cubes drenched in real white butter.</p>
+                <div class="menu-footer">
+                    <span class="price">₹290</span>
+                    <div class="quantity-controls" data-name="Paneer Butter Masala" data-price="290">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item" data-category="north-indian">
+            <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=200&q=80" alt="Dal Makhani">
+            <div class="menu-info">
+                <h3>Dal Makhani <span class="veg-icon"></span></h3>
+                <p>Black lentils slow-cooked overnight on charcoal, finished with rich dairy cream.</p>
+                <div class="menu-footer">
+                    <span class="price">₹240</span>
+                    <div class="quantity-controls" data-name="Dal Makhani" data-price="240">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item" data-category="north-indian">
+            <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=200&q=80" alt="Malai Kofta">
+            <div class="menu-info">
+                <h3>Malai Kofta <span class="veg-icon"></span></h3>
+                <p>Deep-fried paneer and potato dumplings floating smoothly inside a cashew-nut cream gravy.</p>
+                <div class="menu-footer">
+                    <span class="price">₹280</span>
+                    <div class="quantity-controls" data-name="Malai Kofta" data-price="280">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item" data-category="north-indian">
+            <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=200&q=80" alt="Butter Naan">
+            <div class="menu-info">
+                <h3>Butter Naan <span class="veg-icon"></span></h3>
+                <p>Traditional flatbread raised using fine flour, baked inside clay tandoor, loaded with premium butter.</p>
+                <div class="menu-footer">
+                    <span class="price">₹60</span>
+                    <div class="quantity-controls" data-name="Butter Naan" data-price="60">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="menu-item" data-category="chinese">
             <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=200&q=80" alt="Chilli Garlic Noodles">
             <div class="menu-info">
                 <h3>Chilli Garlic Noodles <span class="veg-icon"></span></h3>
-                <p>Spicy stir-fried noodles loaded with burnt garlic, peppers, and authentic sauces.</p>
+                <p>Spicy wok-tossed noodles packed with sizzling golden burnt garlic bits and chili oil flakes.</p>
                 <div class="menu-footer">
                     <span class="price">₹190</span>
                     <div class="quantity-controls" data-name="Chilli Garlic Noodles" data-price="190">
@@ -373,11 +458,60 @@
             </div>
         </div>
 
+        <div class="menu-item" data-category="chinese">
+            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=200&q=80" alt="Veg Fried Rice">
+            <div class="menu-info">
+                <h3>Veg Fried Rice <span class="veg-icon"></span></h3>
+                <p>Fluffy basmati grains stir-fried inside high-flame wok with chopped beans, carrots, and light soy.</p>
+                <div class="menu-footer">
+                    <span class="price">₹170</span>
+                    <div class="quantity-controls" data-name="Veg Fried Rice" data-price="170">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item" data-category="chinese">
+            <img src="https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=200&q=80" alt="Veg Manchurian Gravy">
+            <div class="menu-info">
+                <h3>Veg Manchurian Gravy <span class="veg-icon"></span></h3>
+                <p>Crispy minced vegetable roundels simmered within an aromatic ginger, garlic, and dark soy broth.</p>
+                <div class="menu-footer">
+                    <span class="price">₹220</span>
+                    <div class="quantity-controls" data-name="Veg Manchurian Gravy" data-price="220">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item" data-category="chinese">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=200&q=80" alt="Paneer Chilli Dry">
+            <div class="menu-info">
+                <h3>Paneer Chilli Dry <span class="veg-icon"></span></h3>
+                <p>Crispy batter-coated cottage cheese tossed along with diced onions, capsicums, and green chilies.</p>
+                <div class="menu-footer">
+                    <span class="price">₹240</span>
+                    <div class="quantity-controls" data-name="Paneer Chilli Dry" data-price="240">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="menu-item" data-category="fast-food">
             <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=80" alt="Crispy Veg Burger">
             <div class="menu-info">
                 <h3>Crispy Veg Burger <span class="veg-icon"></span></h3>
-                <p>Toasted buns sandwiching a crispy golden vegetable patty, lettuce, and secret creamy mayo.</p>
+                <p>Toasted sesame buns housing a golden vegetable patty, fresh lettuce, and premium creamy mayo flavor profiles.</p>
                 <div class="menu-footer">
                     <span class="price">₹120</span>
                     <div class="quantity-controls" data-name="Crispy Veg Burger" data-price="120">
@@ -389,20 +523,52 @@
             </div>
         </div>
 
+        <div class="menu-item" data-category="fast-food">
+            <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=200&q=80" alt="Peri Peri French Fries">
+            <div class="menu-info">
+                <h3>Peri Peri Fries <span class="veg-icon"></span></h3>
+                <p>Golden potato skin cut strips, deep-fried to crisp perfection and dusted thoroughly with hot African Peri-Peri spices.</p>
+                <div class="menu-footer">
+                    <span class="price">₹140</span>
+                    <div class="quantity-controls" data-name="Peri Peri Fries" data-price="140">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="menu-item" data-category="fast-food">
+            <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=200&q=80" alt="Margherita Pizza">
+            <div class="menu-info">
+                <h3>Margherita Pizza 9" <span class="veg-icon"></span></h3>
+                <p>Hand-stretched thin crust pizza dough layered with rich Italian tomato sauce and molten Mozzarella herb base.</p>
+                <div class="menu-footer">
+                    <span class="price">₹250</span>
+                    <div class="quantity-controls" data-name="Margherita Pizza" data-price="250">
+                        <button class="minus-btn">-</button>
+                        <span class="qty">0</span>
+                        <button class="plus-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="cart-sticky-bar" id="cart-sticky-bar">
         <div class="cart-bar-container" style="flex-direction: column; gap: 14px;">
             
             <div id="checkout-form" style="display: none; width: 100%;">
                 <p style="font-size: 0.85rem; color: var(--accent-color); margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">DELIVERY & SECURE PAYMENT DETAILS:</p>
-                <input type="text" id="cust-name" placeholder="Enter Your Full Name" style="width: 100%; padding: 11px; margin-bottom: 8px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem;">
-                <textarea id="cust-address" placeholder="Full Delivery Address (Flat/House No, Landmark, Street)" style="width: 100%; padding: 11px; margin-bottom: 10px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; height: 60px; resize: none;"></textarea>
+                <input type="text" id="cust-name" placeholder="Enter Your Full Name" style="width: 100%; padding: 11px; margin-bottom: 8px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; outline: none;">
+                <textarea id="cust-address" placeholder="Full Delivery Address (Flat/House No, Landmark, Street Name)" style="width: 100%; padding: 11px; margin-bottom: 10px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; height: 65px; resize: none; outline: none;"></textarea>
                 
-                <select id="payment-method" style="width: 100%; padding: 11px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer;">
+                <select id="payment-method" style="width: 100%; padding: 11px; background: #000; border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; outline: none;">
                     <option value="COD">💵 Cash on Delivery (COD)</option>
-                    <option value="UPI_DEEP">📱 Pay via UPI App Instantly (GPay/PhonePe/Paytm)</option>
-                    <option value="RAZORPAY">💳 Pay via Card / NetBanking / Wallets</option>
+                    <option value="UPI_DEEP">📱 Pay via UPI App Instantly (GPay / PhonePe / Paytm)</option>
+                    <option value="RAZORPAY">💳 Pay via Card / NetBanking / Razorpay Engine</option>
                 </select>
             </div>
             
@@ -426,8 +592,8 @@
     <div class="system-modal" id="support-modal">
         <div class="modal-card">
             <span class="close-modal-btn" id="close-support-btn">&times;</span>
-            <h3 style="color: white; margin-bottom: 6px;">Customer Support</h3>
-            <p style="color: #aaa; font-size: 0.85rem; margin-bottom: 18px;">Need to cancel, track, or modify your current meal dispatch? Tap an option below:</p>
+            <h3 style="color: white; margin-bottom: 6px; font-weight: 800;">Customer Support</h3>
+            <p style="color: #aaa; font-size: 0.85rem; margin-bottom: 18px;">Need to cancel, track, or modify your food package? Tap an action hub selection below:</p>
             
             <a href="tel:+919876543210" class="support-action-btn" style="background: var(--danger-red); color: white;">
                 <i class="fas fa-phone-alt"></i> Urgent: Call Kitchen to Cancel
@@ -446,14 +612,14 @@
 
     <script>
         // =========================================================
-        // --- ⚙️ CONFIGURATION ZONE (EDIT THESE STATEMENTS) ---
+        // --- ⚙️ CONFIGURATION ZONE (ENTER MERCHANT STREAMS HERE) ---
         // =========================================================
-        const WHATSAPP_NUMBER = "919876543210";       // Restaurant WhatsApp number with Country Code (no '+' sign)
-        const RESTAURANT_UPI_ID = "basiil@okaxis";     // Your active merchant bank UPI handler
-        const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY";  // Put your public Razorpay Key ID here from dashboard
+        const WHATSAPP_NUMBER = "919876543210";       // Global target delivery terminal contact (No '+' sign)
+        const RESTAURANT_UPI_ID = "basiil@okaxis";     // Standard VPA bank endpoint string for custom transfers
+        const RAZORPAY_KEY_ID = "rzp_test_YOUR_KEY";  // Enter valid API Public Key token from platform dashboard
         // =========================================================
 
-        // Application Global UI States
+        // Application State Matrices
         let cart = {};
         let checkoutStage = "cart"; 
 
@@ -464,14 +630,14 @@
         const checkoutForm = document.getElementById('checkout-form');
         const paymentSelector = document.getElementById('payment-method');
 
-        // --- 1. FILTER CONTROLLER ENGINE ---
+        // --- 1. DECOUPLED FILTER CONTROLLER ENGINE ---
         const chips = document.querySelectorAll('.category-chip');
         const dishes = document.querySelectorAll('.menu-item');
 
         chips.forEach(chip => {
             chip.addEventListener('click', () => {
                 chips.forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
+                chip.add(chip.classList.add('active'));
                 
                 const target = chip.getAttribute('data-target');
                 dishes.forEach(dish => {
@@ -484,7 +650,7 @@
             });
         });
 
-        // --- 2. MULTI-INCREMENT QUANTITY MANAGEMENT ---
+        // --- 2. MULTI-INCREMENT QUANTITY PROCESSING CORE ---
         document.querySelectorAll('.quantity-controls').forEach(control => {
             const plusBtn = control.querySelector('.plus-btn');
             const minusBtn = control.querySelector('.minus-btn');
@@ -513,7 +679,7 @@
             });
         });
 
-        // --- 3. CORE UI SYNC MATRIX ---
+        // --- 3. CORE INTERACTION UI COUPLER ---
         function updateCartState() {
             let totalItems = 0;
             let grandTotal = 0;
@@ -533,7 +699,7 @@
             }
         }
 
-        // --- 4. TWO-STAGE REACTION TERMINALS ---
+        // --- 4. TWO-STAGE STRUCTURAL GATEWAYS ---
         paymentSelector.addEventListener('change', () => {
             if (checkoutStage === "address") updateButtonContext();
         });
@@ -552,7 +718,7 @@
         checkoutButton.addEventListener('click', () => {
             if (Object.keys(cart).length === 0) return;
 
-            // STAGE 1: Reveal Address Panel Setup
+            // STAGE 1: Transition View and Collect Address Fields
             if (checkoutStage === "cart") {
                 checkoutForm.style.display = "block";
                 checkoutStage = "address";
@@ -560,85 +726,86 @@
                 return;
             }
 
-            // STAGE 2: Run Client Authorization Gateways
+            // STAGE 2: Read Choices and Launch Targeted Payment Stream
             if (checkoutStage === "address") {
                 const custName = document.getElementById('cust-name').value.trim();
                 const custAddress = document.getElementById('cust-address').value.trim();
                 const paymentMethod = paymentSelector.value;
 
                 if (!custName || !custAddress) {
-                    alert("Please type your Name and Delivery Address before advancing!");
+                    alert("Please write your Name and Delivery Location before transmitting order details!");
                     return;
                 }
 
-                // Compile Text Components
+                // Compile Food Breakdowns For Transaction Dispatches
                 let grandTotal = 0;
-                let receiptBreakdown = "";
+                let ticketItemText = "";
                 for (const item in cart) {
                     const itemTotal = cart[item].price * cart[item].qty;
                     grandTotal += itemTotal;
-                    receiptBreakdown += `• *${item}*\n  ${cart[item].qty} x ₹${cart[item].price} = ₹${itemTotal}\n\n`;
+                    ticketItemText += `• *${item}*\n  ${cart[item].qty} x ₹${cart[item].price} = ₹${itemTotal}\n\n`;
                 }
 
-                // FLOW A: CASH ON DELIVERY ROUTING
+                // SUB-FLOW 1: STANDARD CASH ON DELIVERY LINKUP
                 if (paymentMethod === "COD") {
-                    dispatchToWhatsApp(custName, custAddress, "💵 Cash on Delivery (COD)", "Pending Kitchen Callback", grandTotal, receiptBreakdown);
+                    dispatchToWhatsApp(custName, custAddress, "💵 Cash on Delivery (COD)", "Awaiting Store Call Check", grandTotal, ticketItemText);
                 }
 
-                // FLOW B: NATIVE PHONE PEER-TO-PEER DEEP LINKING
+                // SUB-FLOW 2: HARDWARE NATIVE DEEP-LINK APP PIPELINE
                 else if (paymentMethod === "UPI_DEEP") {
-                    const intentUri = `upi://pay?pa=${RESTAURANT_UPI_ID}&pn=${encodeURIComponent("The Basiil")}&am=${grandTotal}&cu=INR&tn=${encodeURIComponent("Food - " + custName)}`;
-                    alert("Launching local smartphone payment system apps. Complete payment, then tap 'Confirm Order' back on this browser web tab!");
+                    const intentUri = `upi://pay?pa=${RESTAURANT_UPI_ID}&pn=${encodeURIComponent("The Basiil")}&am=${grandTotal}&cu=INR&tn=${encodeURIComponent("Food Order - " + custName)}`;
+                    alert("Triggering application linkages inside your phone device. Settle funds then navigate right back here to hit confirmation!");
                     window.location.href = intentUri;
                     
-                    // Transformation step to enable final chat hand-off notification loop
+                    // Modify display matrix state to complete final message delivery stream
                     checkoutButton.innerHTML = `<i class="fab fa-whatsapp"></i> Confirm & Send Order`;
                     paymentSelector.value = "COD"; 
                 }
 
-                // FLOW C: SECURE INTEGRATED RAZORPAY STANDARD POPUP OVERLAY
+                // SUB-FLOW 3: INTEGRATED MODAL PAYMENT PLATFORM
                 else if (paymentMethod === "RAZORPAY") {
                     if(RAZORPAY_KEY_ID.includes("YOUR_KEY")) {
-                        alert("Config Error: Replace placeholder key string inside code with your real key!");
+                        alert("Configuration Error: Insert clean active dashboard public keys directly inside your scripts engine setup lines!");
                         return;
                     }
 
-                    var checkoutOptions = {
+                    var gatewayParameters = {
                         "key": RAZORPAY_KEY_ID,
-                        "amount": grandTotal * 100, // conversion logic to paises
+                        "amount": grandTotal * 100, // calculations handled in subunit formats (paisa)
                         "currency": "INR",
                         "name": "The Basiil",
-                        "description": "Secure Checkout Settlement",
+                        "description": "Secure Menu Settlement Module",
                         "theme": { "color": "#4ade80" },
                         "prefill": { "name": custName },
-                        "handler": function (rzpResponse) {
-                            alert("Payment Captured Successfully!");
-                            dispatchToWhatsApp(custName, custAddress, "💳 Online Payment (Razorpay)", `✅ Token Verified: ${rzpResponse.razorpay_payment_id}`, grandTotal, receiptBreakdown);
+                        "handler": function (secureReceipt) {
+                            alert("Payment Verified Successfully!");
+                            dispatchToWhatsApp(custName, custAddress, "💳 Digital Card/Banking (Online)", `✅ Reference ID: ${secureReceipt.razorpay_payment_id}`, grandTotal, ticketItemText);
                         },
                         "modal": {
-                            "ondismiss": function() { alert("Payment Interface Dismissed."); }
+                            "ondismiss": function() { alert("Integrated card interface dismissed by operator."); }
                         }
                     };
-                    var instance = new Razorpay(checkoutOptions);
-                    instance.open();
+                    var paymentWindowInstance = new Razorpay(gatewayParameters);
+                    paymentWindowInstance.open();
                 }
             }
         });
 
-        function dispatchToWhatsApp(name, address, method, transactionState, total, itemsFormatted) {
-            let message = "🟢 *NEW WEB ORDER DETECTED FROM THE BASIIL*\n";
-            message += "======================================\n";
-            message += `👤 *Customer:* ${name}\n`;
-            message += `🏠 *Address:* ${address}\n`;
-            message += `💳 *Payment Method:* ${method}\n`;
-            message += `📌 *Transaction status:* ${transactionState}\n`;
-            message += "======================================\n\n";
-            message += itemsFormatted;
-            message += "======================================\n";
-            message += `*Grand Total: ₹${total}*\n\n`;
-            message += "Please review this digital ticket and provide confirmation prep time. Thank you!";
+        // Modular Messaging Dispatch Core Engine Terminal Hook
+        function dispatchToWhatsApp(name, address, method, processDetails, total, parsedReceiptItems) {
+            let coreMessage = "🟢 *NEW WEB TICKET FOUND FROM THE BASIIL*\n";
+            coreMessage += "======================================\n";
+            coreMessage += `👤 *Customer Name:* ${name}\n`;
+            coreMessage += `🏠 *Delivery Base:* ${address}\n`;
+            coreMessage += `💳 *Selected Payment:* ${method}\n`;
+            coreMessage += `📌 *Account Settlement Status:* ${processDetails}\n`;
+            coreMessage += "======================================\n\n";
+            coreMessage += parsedReceiptItems;
+            coreMessage += "======================================\n";
+            coreMessage += `*Grand Total Value: ₹${total}*\n\n`;
+            coreMessage += "Please review this digital transaction setup profile and verify active kitchen prep timelines. Thank you!";
 
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(coreMessage)}`, '_blank');
         }
 
         function resetCheckoutStage() {
@@ -650,34 +817,33 @@
             paymentSelector.value = "COD";
         }
 
-        // --- 5. HELP DESK & LIVE DISPATCH TRACKER MODAL INTERFACES ---
-        const helpModal = document.getElementById('support-modal');
-        const openHelpBtn = document.getElementById('open-support-btn');
-        const closeHelpBtn = document.getElementById('close-support-btn');
-        const trackOrderBtn = document.getElementById('track-order-btn');
-        const chatSupportBtn = document.getElementById('chat-support-btn');
+        // --- 5. HELP DESK PORTAL WINDOW AND SYSTEM TIMELINE LOGISTICS ---
+        const supportOverlayContainer = document.getElementById('support-modal');
+        const triggerOpenPanelBtn = document.getElementById('open-support-btn');
+        const triggerClosePanelBtn = document.getElementById('close-support-btn');
+        const triggerTrackTicketBtn = document.getElementById('track-order-btn');
+        const triggerChatTicketBtn = document.getElementById('chat-support-btn');
 
-        openHelpBtn.addEventListener('click', () => helpModal.style.display = 'flex');
-        closeHelpBtn.addEventListener('click', () => helpModal.style.display = 'none');
-        window.addEventListener('click', (e) => { if (e.target === helpModal) helpModal.style.display = 'none'; });
+        triggerOpenPanelBtn.addEventListener('click', () => supportOverlayContainer.style.display = 'flex');
+        triggerClosePanelBtn.addEventListener('click', () => supportOverlayContainer.style.display = 'none');
+        window.addEventListener('click', (eventGate) => { if (eventGate.target === supportOverlayContainer) supportOverlayContainer.style.display = 'none'; });
 
-        trackOrderBtn.addEventListener('click', () => {
-            const currentNameInput = document.getElementById('cust-name').value.trim();
-            let trackPayloadText = "";
+        triggerTrackTicketBtn.addEventListener('click', () => {
+            const reactiveNameBuffer = document.getElementById('cust-name').value.trim();
+            let builtTrackingQuery = "";
 
-            if (currentNameInput) {
-                trackPayloadText = `👋 Hi Team! I just pushed a digital order profile under the name *${currentNameInput}*. Could you drop me the courier map status link or active delivery driver contact info?`;
+            if (reactiveNameBuffer) {
+                builtTrackingQuery = `👋 Hi Team! I just finalized a live order dispatch profile under the account identification name *${reactiveNameBuffer}*. Could someone share a real-time tracking update link or courier transit cell details?`;
             } else {
-                trackPayloadText = "👋 Hi Team! I'm reaching out to request a real-time transit status update on my recent food dispatch request.";
+                builtTrackingQuery = "👋 Hi Team! I'm pinging your main line setup to see if I can get a transit tracking or status evaluation on my recent kitchen order dispatch.";
             }
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(trackPayloadText)}`, '_blank');
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(builtTrackingQuery)}`, '_blank');
         });
 
-        chatSupportBtn.addEventListener('click', () => {
-            const genericSupportMsg = "Hello! I am browsing your web menu platform and ran into a general question regarding kitchen operations.";
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(genericSupportMsg)}`, '_blank');
+        triggerChatTicketBtn.addEventListener('click', () => {
+            const genericChatGreeting = "Hello! I am actively looking through your premium cloud kitchen menu platform and ran into a general operating question.";
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(genericChatGreeting)}`, '_blank');
         });
     </script>
 </body>
 </html>
-
